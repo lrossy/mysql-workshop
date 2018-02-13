@@ -101,3 +101,26 @@ SELECT * from expenses LEFT JOIN users ON users.id = expenses.user_id;
 
 -- see this for more info: https://blog.codinghorror.com/a-visual-explanation-of-sql-joins/
 
+--use these for complete example!
+
+CREATE TABLE `sessions` (
+  `session_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `token` varchar(100) NOT NULL,
+  PRIMARY KEY (`session_id`),
+  UNIQUE KEY `token` (`token`),
+  KEY `fk_user_session` (`user_id`),
+  CONSTRAINT `fk_user_session` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+);
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstName` varchar(25) DEFAULT NULL,
+  `lastName` varchar(35) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email` (`email`)
+);
