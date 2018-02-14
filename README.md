@@ -45,3 +45,5 @@ $ mysql -u<USERNAME> -p
 * First, look at simple.js and understand it
 * Then, express-simple.js
 * Finally, complete example/server.js
+
+### Instructions for complete example coming soon
